@@ -4,21 +4,22 @@
             <div class="card text-center">
                 <div class="card-body">
                     <h3>Agregar Empleado</h3>
-                    <form action="" class="mt-4">
+                    <span *ngIf="submitted && createEmpleado.invalid" class="badge badge-danger">Todos los campos son obligatorios</span>
+                    <form action="" class="mt-4" [formGroup]="createEmpleado" (ngSubmit)="agregarEmpleado()">
                         <div class="row mb-3">
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Nombre">
+                                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Apellido">
+                                <input type="text" class="form-control" formControlName="apellido" placeholder="Apellido">
                             </div>
                         </div> <!-- Row -->
                         <div class="row mb-3">
                             <div class="col">
-                                <input type="number" class="form-control" placeholder="Documento">
+                                <input type="number" class="form-control" formControlName="documento" placeholder="Documento">
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Salario">
+                                <input type="number" class="form-control" formControlName="salario" placeholder="Salario">
                             </div>
                         </div> <!-- Row -->
                         <div class="mt-3">
