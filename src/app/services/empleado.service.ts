@@ -17,6 +17,6 @@ export class EmpleadoService {
    
   //Mostrar los datos de firestore a la tabla html
    getEmpleados(): Observable<any> {
-     return this.firestore.collection('empleados').snapshotChanges();
+     return this.firestore.collection('empleados', ref => ref.orderBy('fechaCreacion', 'asc')).snapshotChanges();
    }
 }

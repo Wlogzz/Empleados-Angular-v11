@@ -1,3 +1,4 @@
+
 <div class="container mt-4 mb-4">
     <div class="card">
         <div class="card-body">
@@ -6,7 +7,6 @@
             <table class="table mt-4 table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Documento</th>
@@ -15,34 +15,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>658741235</td>
-                        <td>2500000</td>
+                    <tr *ngFor="let empleado of empleados">
+                        <td>{{ empleado.nombre }}</td>
+                        <td>{{ empleado.apellido }}</td>
+                        <td>{{ empleado.documento }}</td>
+                        <td>{{ empleado.salario }}</td>
                         <td>
                             <button class="btn btn-warning btn-lg">
                                 <i class="far fa-edit fa-lg text-success mr-2"></i>
                                 <i class="fas fa-trash fa-lg text-danger"></i>
                             </button>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>658741235</td>
-                        <td>2500000</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>01</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>658741235</td>
-                        <td>2500000</td>
-                        <td></td>
                     </tr>
                 </tbody>
             </table>
