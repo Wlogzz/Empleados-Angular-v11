@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class CreateEmpleadosComponent implements OnInit {
   createEmpleado: FormGroup;
   submitted = false;
+  loading = false; //Spinner
 
 
   constructor(private fb: FormBuilder,
@@ -42,13 +43,14 @@ export class CreateEmpleadosComponent implements OnInit {
       fechaCreacion: new Date(),
       fechaActualización: new Date(),
     }
-
+    this.loading = true;
     this._empleadoService.agregarEmpleado(empleado).then(() =>{
       console.log('Empleado registrado con éxito!');
+      this.loading = false; //Spinner
       Swal.fire({
         icon: 'success',
         title: 'Empleado registrado con éxito!',
-        showConfirmButton: true,
+        showConfirmButton: true
       }).then((result) => {
         if (result.isConfirmed) {
           this.router.navigate(['/list-empleados']);
@@ -56,15 +58,15 @@ export class CreateEmpleadosComponent implements OnInit {
       })
 
     }).catch(error => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Error al ingresar los datos',
-          })
-      // console.log(error);
+      console.log(error);
+      this.loading = false;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error al ingresar los datos',
+      })
     })
 
     // console.log(empleado);
   }
-
 }
