@@ -8,10 +8,10 @@
                     <form action="" class="mt-4" [formGroup]="createEmpleado" (ngSubmit)="agregarEmpleado()">
                         <div class="row mb-3">
                             <div class="col">
-                                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre">
+                                <input type="text" autocomplete="off" spellcheck="false" class="form-control" formControlName="nombre" placeholder="Nombre" >
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" formControlName="apellido" placeholder="Apellido">
+                                <input type="text" autocomplete="off" spellcheck="false" class="form-control" formControlName="apellido" placeholder="Apellido" >
                             </div>
                         </div> <!-- Row -->
                         <div class="row mb-3">
