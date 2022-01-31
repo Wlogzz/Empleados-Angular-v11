@@ -31,7 +31,7 @@ export class ListEmpleadosComponent implements OnInit {
           ...element.payload.doc.data()
         })
       });
-      console.log(this.empleados);
+      // console.log(this.empleados);
     });
   }
 

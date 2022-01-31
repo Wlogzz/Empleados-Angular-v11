@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmpleadoService } from 'src/app/services/empleado.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-empleados',
@@ -13,20 +13,25 @@ export class CreateEmpleadosComponent implements OnInit {
   createEmpleado: FormGroup;
   submitted = false;
   loading = false; //Spinner
-
+  id: string | null;
+  titulo = 'Agregar Empleado';
 
   constructor(private fb: FormBuilder,
               private _empleadoService: EmpleadoService,
-              private router: Router) {
+              private router: Router,
+              private aRoute: ActivatedRoute) {
     this.createEmpleado = this.fb.group({
       nombre: [ '', Validators.required],
       apellido: [ '', Validators.required],
       documento: [ '', Validators.required],
       salario: [ '', Validators.required],
     })
+    this.id = this.aRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
    }
 
   ngOnInit(): void {
+    this.esEditar();
   }
 
   agregarEmpleado() {
@@ -66,7 +71,15 @@ export class CreateEmpleadosComponent implements OnInit {
         text: 'Error al ingresar los datos',
       })
     })
-
-    // console.log(empleado);
   }
+
+  esEditar() {
+    this.titulo = 'Editar Empleado';
+    if(this.id !== null) {
+      this._empleadoService.getEmpleado(this.id).subscribe(data => {
+        console.log(data);
+      })
+    }
+  }
+
 }

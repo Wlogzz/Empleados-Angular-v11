@@ -27,7 +27,7 @@
                         <td>{{ empleado.salario | currency }}</td>
                         <td>
                             <button class="btn btn-warning btn-lg">
-                                <i class="far fa-edit fa-lg text-success mr-2"></i>
+                                <i class="far fa-edit fa-lg text-success mr-2" [routerLink]="['/edit-empleados', empleado.id]"></i>
                                 <i (click)="eliminarEmpleado(empleado.id)" class="fas fa-trash fa-lg text-danger"></i>
                             </button>
                         </td>
